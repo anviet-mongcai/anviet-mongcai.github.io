@@ -42,3 +42,4 @@
 - [English](https://anviet-mongcai.github.io/en/)
 - [中文](https://anviet-mongcai.github.io/zh/)
 - [Cung đường và quán ăn](https://anviet-mongcai.github.io/cung-duong/)
+- [Thuê xe máy đi Trà Cổ](https://anviet-mongcai.github.io/thue-xe-may-tra-co/) · [Tra Co scooter rental](https://anviet-mongcai.github.io/en/tra-co/) · [茶古租电动车](https://anviet-mongcai.github.io/zh/tra-co/)
