@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /qlvh/
+Disallow: /ky/
 
 Sitemap: https://anviet-mongcai.github.io/sitemap.xml
