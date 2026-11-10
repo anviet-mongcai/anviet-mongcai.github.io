@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#12674A">
 <meta name="robots" content="noindex,nofollow">
 <title>Xác nhận thuê xe · An Việt Móng Cái</title>
-<!-- Trang ký điện tử Điều kiện thuê xe · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
+<!-- Trang ký điện tử Điều kiện thuê xe · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
      v2.3: điều khoản v34 → thẻ «Hướng dẫn sử dụng xe v31» (QĐ-D303 a: tóm tắt, không thêm nghĩa vụ — ảnh qd/HUONG_DAN_v31_*.jpg),
            dòng định vị «chỉ xác định vị trí, không nghe, không ghi âm» (QĐ-D302 a); điều khoản v33 → thẻ QUY ĐỊNH v30 như v2.2.
      v2.2: máy chủ gửi điều khoản v34 (sau ngày hiệu lực — QĐ-D299) → ô dữ liệu «đã được thông báo» (QĐ-D296), câu ngôn ngữ
@@ -295,7 +295,7 @@
     DL = null; ve();
     goi({ ky: 'xem', t: MA }).then(function (r) {
       if (!r.ok) { DL = { loi: r.ma_loi || 'MA' }; return ve(); }
-      if (r.da_ky) { KQ = r; DL = { phieu: r.phieu }; return ve(); }
+      if (r.da_ky) { KQ = r; DL = r.pldc ? { pldc: r.pldc } : { phieu: r.phieu }; return ve(); }
       DL = r; ve();
     }, function () { DL = { loi: 'MANG' }; ve(); });
   }
@@ -313,6 +313,7 @@
       if ($('thuLai')) $('thuLai').onclick = tai;
       ganLienHe(); return;
     }
+    if (DL.pldc) return KQ ? vePLXong() : vePL();   // v2.7: phụ lục điều chỉnh
     if (KQ) return veXong();
     veForm();
   }
@@ -464,6 +465,68 @@
         if (!r.sdt) r.sdt = sdt;
         KQ = r; ve(); window.scrollTo(0, 0);
       }, function () { che(false); loi.textContent = t('matMang'); });
+  }
+
+  /* ── v2.7 · PHỤ LỤC ĐIỀU CHỈNH (QĐ-D347 a) — nội dung do máy chủ dựng (zz_v75 V75_hien_), trang chỉ hiển thị ── */
+  var TP = {
+    vi: { o: 'Chưa đánh dấu đủ 2 ô xác nhận.', nut: 'KÝ PHỤ LỤC', xong: 'ĐÃ KÝ PHỤ LỤC', mo: 'Phụ lục {dc} của hợp đồng {hd} đã ký lúc {luc}.', pdf: 'Tải phụ lục (PDF)', het: 'Mã có hiệu lực đến {gio}.' },
+    en: { o: 'Please tick both boxes.', nut: 'SIGN AMENDMENT', xong: 'AMENDMENT SIGNED', mo: 'Amendment {dc} to contract {hd} was signed at {luc}.', pdf: 'Download amendment (PDF)', het: 'This code is valid until {gio}.' },
+    zh: { o: '请勾选全部2项。', nut: '签署变更附件', xong: '变更附件已签署', mo: '合同 {hd} 的变更附件 {dc} 已于 {luc} 签署。', pdf: '下载变更附件（PDF）', het: '此码有效期至 {gio}。' }
+  };
+  function tp(k) { return TP[NN][k]; }
+  function p1(o) { return e(o[NN] || o.vi); }                                             // một dòng: ngôn ngữ đang chọn
+  function p2(o) { return NN === 'vi' || o.vi === o[NN] ? e(o.vi) : e(o[NN]) + '<br><span class="mo">' + e(o.vi) + '</span>'; }   // kèm Tiếng Việt
+  function thanPL(H) {
+    return '<div class="the"><h1>' + p1(H.tieu_de) + '</h1><div class="mo">' + p1(H.phu) + '</div></div>' +
+      H.phan.map(function (ph) {
+        var s = '<div class="the"><h2>' + p1(ph.h) + '</h2>';
+        if (ph.doan) s += ph.doan.map(function (o, i) { return '<p style="margin:0 0 10px">' + (ph.so ? (i + 1) + '. ' : '') + p2(o) + '</p>'; }).join('');
+        if (ph.dong) s += ph.dong.map(function (d) { return '<div class="kv"><span class="k">' + p1(d[0]) + '</span><span class="v">' + p1(d[1]) + '</span></div>'; }).join('');
+        return s + '</div>';
+      }).join('');
+  }
+  function vePL() {
+    var H = DL.pldc, nd = $('noiDung');
+    var giu = { a: $('pl1') && $('pl1').checked, b: $('pl2') && $('pl2').checked }, anh = CK.coNet() ? CK.layAnh() : null;
+    var ckA = DL.a_ky ? '<div class="ckA"><div class="ckAi"><img src="' + DL.a_ky + '" alt=""><i>Ký điện tử · PLĐC ' + e(H.so) + ' · HĐ số ' + e(H.soHD) + '/HĐTX</i></div>' +
+      '<span><b>' + e(L('ckA')) + '</b><br>' + e(t('ckAGhi')) + '</span></div>' : '';
+    nd.innerHTML = thanPL(H) +
+      '<div class="the"><h2>' + t('xn') + '</h2>' +
+      '<label class="o"><input type="checkbox" id="pl1"><span>' + p2(H.o[0]) + '</span></label>' +
+      '<label class="o"><input type="checkbox" id="pl2"><span>' + p2(H.o[1]) + '</span></label></div>' +
+      '<div class="the"><h2>' + t('kyTen') + '</h2>' + ckA + '<div class="mo">' + e(t('ckB')) + '</div>' +
+      '<div class="khungKy"><canvas id="ck"></canvas><div class="goi" id="ckGoi">' + t('kyGoi') + '</div></div>' +
+      '<button class="kyLai" id="kyLai">' + t('kyLai') + '</button>' +
+      '<button class="chinh" id="gui">' + e(tp('nut')) + '</button><div class="loi" id="loi"></div>' +
+      (DL.het_han ? '<p class="mo" style="text-align:center;margin-top:8px">' + e(tp('het').replace('{gio}', DL.het_han)) + '</p>' : '') + '</div>';
+    $('pl1').checked = !!giu.a; $('pl2').checked = !!giu.b;
+    CK.gan($('ck'), anh);
+    $('kyLai').onclick = function () { CK.xoa(); };
+    $('gui').onclick = guiPL;
+  }
+  function guiPL() {
+    var loi = $('loi'); loi.textContent = '';
+    if (!($('pl1').checked && $('pl2').checked)) { loi.textContent = tp('o'); return; }
+    if (!CK.du()) { loi.textContent = t('thieuKy'); return; }
+    che(true, t('dangGui'));
+    goi({ ky: 'ky', t: MA, nn: NN, ua: UA, o: { pl1: true, pl2: true }, chu_ky: CK.layAnh() })
+      .then(function (r) {
+        che(false);
+        if (!r.ok) {
+          if (r.ma_loi) { DL = { loi: r.ma_loi }; return ve(); }
+          loi.textContent = r.loi || t('matMang'); return;
+        }
+        KQ = r; if (r.pldc) DL = { pldc: r.pldc }; ve(); window.scrollTo(0, 0);
+      }, function () { che(false); loi.textContent = t('matMang'); });
+  }
+  function vePLXong() {
+    var H = (KQ && KQ.pldc) || DL.pldc;
+    $('noiDung').innerHTML = '<div class="the xong"><div class="dau">✅</div><h1>' + e(tp('xong')) + '</h1>' +
+      '<p>' + e(tp('mo').replace('{dc}', H.so || '').replace('{hd}', H.soHD || '').replace('{luc}', KQ.luc || '')) + '</p>' +
+      (KQ.pdf ? '<button class="chinh" id="pdf">' + e(tp('pdf')) + '</button>' : '') +
+      '<h2 style="margin-top:16px">' + t('nhan2') + '</h2>' + lienHe() + '</div>' + thanPL(H);
+    if ($('pdf')) $('pdf').onclick = taiPdf;
+    ganLienHe();
   }
 
   /** Bản điều khoản của phiếu đã ký: từ phiếu đang mở, không thì từ tên PDF «…_DKTX_v34.pdf» (mở lại phiếu đã ký). */
