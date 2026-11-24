@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12674A">
+<meta name="robots" content="noindex,nofollow">
+<title>Hỗ trợ khách thuê · An Việt Móng Cái</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- Trang hỗ trợ khách thuê · v1.0 · 24/11/2026 · đợt 6 bản gọn (QĐ-D380 thu gọn theo QĐ-D447 b; QĐ-D446: không có «lượt thuê của tôi» / «xin gia hạn»).
+     Liên hệ nhanh · báo sự cố kèm ảnh + vị trí (tuỳ khách) → máy chủ QLVH_APP › ho_tro.gs (V88_khach_, kiểm số HĐ + 4 ký tự cuối liên hệ)
+     · thẻ Hướng dẫn sử dụng xe v31 (ảnh ../ky/qd/, đã là tài liệu khách — trang này không thêm nghĩa vụ, không ghi giá, không ngưỡng nội bộ)
+     · đánh giá Google. Không hiện dữ liệu lượt thuê nào; không lưu gì trong máy khách. Mở từ nút ở màn «Đã xác nhận» của trang ký (/ky/). -->
+<style>
+  :root{--muc:#16181D;--nen:#EEF1F4;--the:#fff;--vien:#C9CFD8;--mo:#5B6372;--xanh:#12674A;--do:#A3231C;--vang:#FFF3BF;--r:14px}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--nen);color:var(--muc);font:16px/1.5 ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC",Arial,sans-serif;-webkit-text-size-adjust:100%}
+  .hop{max-width:560px;margin:0 auto;padding:12px 16px 40px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0 12px}
+  header b{font-size:16px}
+  .nn{display:flex;gap:4px}
+  .nn button{border:1px solid var(--vien);background:#fff;border-radius:999px;padding:6px 10px;font-size:14px;color:var(--muc);min-height:36px}
+  .nn button.chon{background:var(--muc);color:#fff;border-color:var(--muc)}
+  .the{background:var(--the);border-radius:var(--r);padding:14px 16px;margin:0 0 12px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  h1{font-size:20px;margin:0 0 4px}
+  h2{font-size:17px;margin:0 0 8px}
+  .mo{color:var(--mo);font-size:14px}
+  .lienhe{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  .lienhe a,.lienhe button{display:flex;align-items:center;justify-content:center;min-height:48px;text-align:center;padding:8px;border-radius:10px;border:1px solid var(--vien);background:#fff;color:var(--muc);text-decoration:none;font-size:16px;font-weight:600}
+  .lienhe a.goi{grid-column:1/-1;background:var(--xanh);border-color:var(--xanh);color:#fff;font-size:18px}
+  .khan{background:var(--vang);border-radius:10px;padding:10px 12px;font-size:15px;margin-top:12px}
+  label.n{display:block;font-size:14px;color:var(--mo);margin:12px 0 4px}
+  input.o,textarea{width:100%;font-size:17px;padding:12px;border:1px solid var(--vien);border-radius:10px;background:#fff;color:var(--muc);font-family:inherit}
+  textarea{min-height:96px;resize:vertical}
+  .hang{display:flex;gap:8px}
+  .hang>div{flex:1}
+  .loai{display:flex;flex-wrap:wrap;gap:6px}
+  .loai button{min-height:44px;padding:0 12px;border-radius:10px;border:2px solid var(--vien);background:#fff;font-size:15px;color:var(--muc)}
+  .loai button[aria-pressed=true]{background:var(--xanh);border-color:var(--xanh);color:#fff}
+  .anh{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .anh img{width:76px;height:76px;object-fit:cover;border-radius:8px;border:1px solid var(--vien)}
+  .phu{display:block;width:100%;min-height:48px;background:#fff;border:1px solid var(--vien);border-radius:10px;font-size:16px;color:var(--muc);margin-top:8px}
+  .chinh{display:block;width:100%;margin-top:14px;padding:16px;font-size:18px;font-weight:700;border:0;border-radius:12px;background:var(--xanh);color:#fff}
+  .chinh:disabled{background:#AEB5BF}
+  .loi{color:var(--do);font-size:15px;margin-top:8px;min-height:1px}
+  .ok{background:#E8F3EE;border-radius:10px;padding:12px;font-size:16px;margin-top:10px}
+  .qd img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid #E3E6EB;margin-top:6px;background:#FAFBFC;min-height:120px}
+  .qd a{display:block;text-align:center;margin-top:6px;font-size:15px;color:var(--xanh)}
+  .an{display:none!important}
+</style>
+</head>
+<body>
+<div class="hop">
+  <header><b>An Việt · Móng Cái</b>
+    <div class="nn"><button data-nn="vi">VI</button><button data-nn="en">EN</button><button data-nn="zh">中文</button></div>
+  </header>
+
+  <div class="the">
+    <h1 data-t="tieuDe"></h1>
+    <p class="mo" data-t="gioiThieu"></p>
+    <div class="lienhe">
+      <a class="goi" href="tel:0399529221" data-t="goi"></a>
+      <a href="https://zalo.me/0399529221" target="_blank" rel="noopener">Zalo</a>
+      <a href="https://wa.me/84399529221" target="_blank" rel="noopener">WhatsApp</a>
+      <button type="button" id="wechat" style="grid-column:1/-1"></button>
+    </div>
+    <div class="khan" data-t="khan"></div>
+  </div>
+
+  <div class="the" id="baoSc">
+    <h2 data-t="scTieuDe"></h2>
+    <p class="mo" data-t="scGhi"></p>
+    <div id="scForm">
+      <div class="hang">
+        <div><label class="n" for="hd" data-t="hd"></label><input class="o" id="hd" inputmode="numeric" autocomplete="off"></div>
+        <div><label class="n" for="k4" data-t="k4"></label><input class="o" id="k4" maxlength="4" autocomplete="off"></div>
+      </div>
+      <label class="n" data-t="loai"></label>
+      <div class="loai" id="loai"></div>
+      <label class="n" for="mo" data-t="moTa"></label>
+      <textarea id="mo" maxlength="600"></textarea>
+      <label class="n" data-t="anhNhan"></label>
+      <input type="file" id="tep" accept="image/*" capture="environment" class="an">
+      <button type="button" class="phu" id="themAnh"></button>
+      <div class="anh" id="dsAnh"></div>
+      <button type="button" class="phu" id="viTri"></button>
+      <div class="mo" id="vtChu"></div>
+      <div class="loi" id="loi"></div>
+      <button type="button" class="chinh" id="gui"></button>
+      <p class="mo" data-t="riengTu"></p>
+    </div>
+    <div class="ok an" id="daGui"></div>
+  </div>
+
+  <div class="the qd">
+    <h2 data-t="hdTieuDe"></h2>
+    <p class="mo" data-t="hdGhi"></p>
+    <img id="anhHD" alt="">
+    <a id="luuHD" download></a>
+  </div>
+
+  <div class="the">
+    <h2 data-t="dgTieuDe"></h2>
+    <p class="mo" data-t="dgGhi"></p>
+    <a class="chinh" style="text-align:center;text-decoration:none" href="https://search.google.com/local/writereview?placeid=ChIJiXf9WcBVSzERtFafCVLTG3o" target="_blank" rel="noopener" data-t="dgNut"></a>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var CONG = 'https://script.google.com/macros/s/AKfycbyYcei_p4LostxboXINvDDUVjRvmJdkelJ6GvOVzQBlQYDzWzV5ZwSZNcxbI6Rpdyd2/exec';
+  var T = {
+    vi: {
+      tieuDe: 'Hỗ trợ trong chuyến đi', gioiThieu: 'Cần giúp gì, cứ liên hệ chúng tôi — trả lời nhanh nhất qua điện thoại hoặc Zalo.',
+      goi: '📞 Gọi 0399.529.221', wechat: 'WeChat: xedienmongcai1 (chạm để chép)', daChep: 'Đã chép ID WeChat',
+      khan: '<b>Tai nạn có người bị thương:</b> gọi ngay <b>115</b> (cấp cứu) và <b>113</b> (công an), sau đó báo cho chúng tôi.',
+      scTieuDe: 'Báo sự cố xe', scGhi: 'Xe hỏng, hết pin, thủng lốp, va chạm… Gửi vài dòng và ảnh — chúng tôi sẽ gọi lại ngay.',
+      hd: 'Số hợp đồng', k4: '4 số cuối SĐT/ID bạn đã đăng ký', loai: 'Chuyện gì xảy ra?', moTa: 'Mô tả ngắn (đang ở đâu, xe thế nào)',
+      L: { hong: 'Xe hỏng / không chạy', pin: 'Hết pin', lop: 'Thủng lốp', va: 'Va chạm', mat: 'Mất xe / đồ / chìa', khac: 'Khác' },
+      anhNhan: 'Ảnh (tối đa 3, không bắt buộc)', themAnh: '📷 Chụp / chọn ảnh', viTri: '📍 Gửi vị trí hiện tại (không bắt buộc)',
+      vtOk: 'Đã lấy vị trí ✓', vtLoi: 'Không lấy được vị trí — hãy ghi địa điểm vào mô tả.', vtDang: 'Đang lấy vị trí…',
+      gui: 'GỬI BÁO SỰ CỐ', dangGui: 'Đang gửi…',
+      riengTu: 'Ảnh, mô tả và vị trí chỉ dùng để xử lý sự cố của hợp đồng này (Điều 8 hợp đồng).',
+      daGui: '✅ Đã gửi lúc {luc}. Chúng tôi sẽ gọi lại cho bạn ngay. Gấp thì gọi 0399.529.221.',
+      E: { thieu: 'Nhập số hợp đồng và đủ 4 ký tự cuối SĐT/ID.', sai: 'Số hợp đồng hoặc 4 ký tự cuối chưa khớp — kiểm tra lại, hoặc gọi 0399.529.221.',
+           khoa: 'Nhập sai nhiều lần — vui lòng gọi 0399.529.221.', cu: 'Hợp đồng này đã hết thời gian hỗ trợ trực tuyến — vui lòng gọi 0399.529.221.',
+           nhieu: 'Đã nhận nhiều báo cáo — vui lòng gọi 0399.529.221.', trong: 'Hãy ghi vài dòng mô tả hoặc thêm ảnh.', anh: 'Ảnh không gửi được — thử chụp lại.',
+           loai: 'Chọn loại sự cố.', mang: 'Không gửi được (mạng?) — thử lại, hoặc gọi 0399.529.221.' },
+      hdTieuDe: 'Hướng dẫn sử dụng xe', hdGhi: 'Tóm tắt hợp đồng để dễ thực hiện — lưu ảnh lại để xem khi đi.', luu: 'Lưu ảnh Hướng dẫn',
+      dgTieuDe: 'Đánh giá', dgGhi: 'Hài lòng với chuyến đi? Một dòng đánh giá trên Google giúp chúng tôi rất nhiều. Cảm ơn bạn!', dgNut: '⭐ Đánh giá trên Google'
+    },
+    en: {
+      tieuDe: 'Help during your rental', gioiThieu: 'Need anything? Contact us — phone or WhatsApp is fastest.',
+      goi: '📞 Call +84 399 529 221', wechat: 'WeChat: xedienmongcai1 (tap to copy)', daChep: 'WeChat ID copied',
+      khan: '<b>Accident with injuries:</b> call <b>115</b> (ambulance) and <b>113</b> (police) first, then tell us.',
+      scTieuDe: 'Report a problem', scGhi: 'Breakdown, flat battery, flat tyre, collision… Send a few words and photos — we will call you back right away.',
+      hd: 'Contract number', k4: 'Last 4 characters of your registered phone/ID', loai: 'What happened?', moTa: 'Short description (where you are, bike condition)',
+      L: { hong: 'Breakdown', pin: 'Battery empty', lop: 'Flat tyre', va: 'Collision', mat: 'Lost bike / item / key', khac: 'Other' },
+      anhNhan: 'Photos (up to 3, optional)', themAnh: '📷 Take / choose photo', viTri: '📍 Send my current location (optional)',
+      vtOk: 'Location added ✓', vtLoi: 'Could not get location — please write the place in the description.', vtDang: 'Getting location…',
+      gui: 'SEND REPORT', dangGui: 'Sending…',
+      riengTu: 'Photos, description and location are used only to handle this contract’s incident (Article 8 of the contract).',
+      daGui: '✅ Sent at {luc}. We will call you back right away. Urgent: +84 399 529 221.',
+      E: { thieu: 'Enter the contract number and the last 4 characters of your phone/ID.', sai: 'Contract number or last 4 characters do not match — check again or call +84 399 529 221.',
+           khoa: 'Too many wrong tries — please call +84 399 529 221.', cu: 'Online support for this contract has ended — please call +84 399 529 221.',
+           nhieu: 'Many reports received — please call +84 399 529 221.', trong: 'Please write a few words or add a photo.', anh: 'Photo could not be sent — try again.',
+           loai: 'Choose what happened.', mang: 'Could not send (network?) — try again or call +84 399 529 221.' },
+      hdTieuDe: 'Bike use guide', hdGhi: 'A summary of the contract to make it easy to follow — save the image for your trip.', luu: 'Save the guide image',
+      dgTieuDe: 'Review', dgGhi: 'Enjoyed your ride? A short Google review helps us a lot. Thank you!', dgNut: '⭐ Review on Google'
+    },
+    zh: {
+      tieuDe: '租车期间帮助', gioiThieu: '需要帮助请联系我们 — 电话或微信最快。',
+      goi: '📞 拨打 +84 399 529 221', wechat: '微信：xedienmongcai1（点按复制）', daChep: '已复制微信号',
+      khan: '<b>交通事故有人受伤：</b>请先拨打 <b>115</b>（急救）和 <b>113</b>（公安），再通知我们。',
+      scTieuDe: '报告故障', scGhi: '车辆故障、没电、爆胎、碰撞……写几句话并拍照发送 — 我们会马上回电。',
+      hd: '合同编号', k4: '登记电话/ID 的最后4位', loai: '发生了什么？', moTa: '简短描述（所在位置、车况）',
+      L: { hong: '车坏/不能开', pin: '没电', lop: '爆胎', va: '碰撞', mat: '丢车/丢物/丢钥匙', khac: '其他' },
+      anhNhan: '照片（最多3张，可选）', themAnh: '📷 拍照 / 选择照片', viTri: '📍 发送当前位置（可选）',
+      vtOk: '已获取位置 ✓', vtLoi: '无法获取位置 — 请在描述中写明地点。', vtDang: '正在获取位置…',
+      gui: '发送报告', dangGui: '发送中…',
+      riengTu: '照片、描述和位置仅用于处理本合同的事故（合同第8条）。',
+      daGui: '✅ 已于 {luc} 发送。我们会马上给您回电。紧急请拨 +84 399 529 221。',
+      E: { thieu: '请输入合同编号和电话/ID 的最后4位。', sai: '合同编号或最后4位不符 — 请核对，或拨打 +84 399 529 221。',
+           khoa: '输错次数过多 — 请拨打 +84 399 529 221。', cu: '本合同的在线支持已结束 — 请拨打 +84 399 529 221。',
+           nhieu: '已收到多次报告 — 请拨打 +84 399 529 221。', trong: '请写几句话或添加照片。', anh: '照片无法发送 — 请重拍。',
+           loai: '请选择情况。', mang: '发送失败（网络？）— 请重试或拨打 +84 399 529 221。' },
+      hdTieuDe: '车辆使用指南', hdGhi: '合同摘要，便于遵守 — 保存图片以便骑行时查看。', luu: '保存指南图片',
+      dgTieuDe: '评价', dgGhi: '骑行满意吗？在谷歌上写一句评价对我们帮助很大。谢谢！', dgNut: '⭐ 在谷歌上评价'
+    }
+  };
+  var qs = new URLSearchParams(location.search), NN = (qs.get('l') || (navigator.language || 'vi')).slice(0, 2).toLowerCase();
+  if (!T[NN]) NN = 'vi';
+  var S = { loai: '', anh: [], vt: '', dang: false };
+  function $(id) { return document.getElementById(id); }
+  function t(k) { return T[NN][k]; }
+  function ve() {
+    document.documentElement.lang = NN === 'zh' ? 'zh-CN' : NN;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-t]'), function (el) { el.innerHTML = t(el.getAttribute('data-t')); });
+    Array.prototype.forEach.call(document.querySelectorAll('.nn button'), function (b) { b.className = b.getAttribute('data-nn') === NN ? 'chon' : ''; });
+    $('wechat').textContent = t('wechat'); $('themAnh').textContent = t('themAnh');
+    $('viTri').textContent = t('viTri'); $('gui').textContent = S.dang ? t('dangGui') : t('gui');
+    $('loai').innerHTML = Object.keys(t('L')).map(function (k) { return '<button type="button" data-l="' + k + '" aria-pressed="' + (S.loai === k) + '">' + t('L')[k] + '</button>'; }).join('');
+    var f = '../ky/qd/HUONG_DAN_v31_' + NN.toUpperCase() + '.jpg';
+    $('anhHD').src = f; $('anhHD').alt = t('hdTieuDe'); $('luuHD').href = f; $('luuHD').textContent = t('luu');
+    if (S.vt) $('vtChu').textContent = t('vtOk');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.nn button'), function (b) { b.onclick = function () { NN = b.getAttribute('data-nn'); ve(); }; });
+  $('loai').onclick = function (ev) { var b = ev.target.closest('button[data-l]'); if (!b) return; S.loai = b.getAttribute('data-l'); ve(); };
+  $('wechat').onclick = function () {
+    var ok = function () { $('wechat').textContent = t('daChep'); setTimeout(function () { $('wechat').textContent = t('wechat'); }, 2000); };
+    try { navigator.clipboard.writeText('xedienmongcai1').then(ok, ok); } catch (e) { ok(); }
+  };
+  if (qs.get('hd')) $('hd').value = String(qs.get('hd')).replace(/[^\w\-]/g, '').slice(0, 30);
+
+  /* ảnh: thu nhỏ trong máy (cạnh dài ≤ 1280, JPEG) — không lưu lại trong máy */
+  $('themAnh').onclick = function () { if (S.anh.length < 3) $('tep').click(); };
+  $('tep').onchange = function () {
+    var f = this.files && this.files[0]; this.value = ''; if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var c = Math.min(1, 1280 / Math.max(img.width, img.height)), cv = document.createElement('canvas');
+        cv.width = Math.round(img.width * c); cv.height = Math.round(img.height * c);
+        cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+        var q = 0.72, du = cv.toDataURL('image/jpeg', q);
+        while (du.length > 640000 && q > 0.3) { q -= 0.12; du = cv.toDataURL('image/jpeg', q); }
+        S.anh.push(du); veAnh();
+      };
+      img.src = r.result;
+    };
+    r.readAsDataURL(f);
+  };
+  function veAnh() {
+    $('dsAnh').innerHTML = S.anh.map(function (a, i) { return '<img src="' + a + '" alt="" data-i="' + i + '">'; }).join('');
+    $('themAnh').disabled = S.anh.length >= 3;
+  }
+  $('dsAnh').onclick = function (ev) { var i = ev.target.getAttribute('data-i'); if (i != null) { S.anh.splice(+i, 1); veAnh(); } };
+  $('viTri').onclick = function () {
+    if (!navigator.geolocation) { $('vtChu').textContent = t('vtLoi'); return; }
+    $('vtChu').textContent = t('vtDang');
+    navigator.geolocation.getCurrentPosition(function (p) {
+      S.vt = p.coords.latitude.toFixed(5) + ',' + p.coords.longitude.toFixed(5); $('vtChu').textContent = t('vtOk');
+    }, function () { $('vtChu').textContent = t('vtLoi'); }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+  };
+  $('gui').onclick = function () {
+    if (S.dang) return;
+    var hd = $('hd').value.trim(), k4 = $('k4').value.trim(), mo = $('mo').value.trim(), loi = $('loi');
+    loi.textContent = '';
+    if (!hd || k4.replace(/[^A-Za-z0-9]/g, '').length < 4) { loi.textContent = t('E').thieu; return; }
+    if (!S.loai) { loi.textContent = t('E').loai; return; }
+    if (!mo && !S.anh.length) { loi.textContent = t('E').trong; return; }
+    S.dang = true; $('gui').disabled = true; $('gui').textContent = t('dangGui');
+    fetch(CONG, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ ht: 1, hd: hd, k4: k4, loai: S.loai, mo: mo, vt: S.vt, anh: S.anh, nn: NN }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        S.dang = false; $('gui').disabled = false; $('gui').textContent = t('gui');
+        if (j && j.ok) {
+          $('scForm').className = 'an'; $('daGui').className = 'ok';
+          $('daGui').textContent = t('daGui').replace('{luc}', j.luc || ''); S.anh = [];
+        } else loi.textContent = (t('E')[j && j.ma] || (j && j.loi) || t('E').mang);
+      }, function () { S.dang = false; $('gui').disabled = false; $('gui').textContent = t('gui'); loi.textContent = t('E').mang; });
+  };
+  ve();
+})();
+</script>
+</body>
+</html>

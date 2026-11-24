@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#12674A">
 <meta name="robots" content="noindex,nofollow">
 <title>Xác nhận thuê xe · An Việt Móng Cái</title>
-<!-- Trang ký điện tử Điều kiện thuê xe · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
+<!-- Trang ký điện tử Điều kiện thuê xe · v2.8 · 24/11/2026 (đợt 6 · QĐ-D447 b: màn «Đã xác nhận» thêm nút sang trang hỗ trợ /ho-tro/ — mang số HĐ + ngôn ngữ; nội dung ký không đổi) · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
      v2.3: điều khoản v34 → thẻ «Hướng dẫn sử dụng xe v31» (QĐ-D303 a: tóm tắt, không thêm nghĩa vụ — ảnh qd/HUONG_DAN_v31_*.jpg),
            dòng định vị «chỉ xác định vị trí, không nghe, không ghi âm» (QĐ-D302 a); điều khoản v33 → thẻ QUY ĐỊNH v30 như v2.2.
      v2.2: máy chủ gửi điều khoản v34 (sau ngày hiệu lực — QĐ-D299) → ô dữ liệu «đã được thông báo» (QĐ-D296), câu ngôn ngữ
@@ -144,7 +144,7 @@
       nut: 'XÁC NHẬN THUÊ XE', dangGui: 'Đang ghi nhận…',
       thieuO: 'Chưa đánh dấu đủ 3 ô xác nhận.', canMo: 'Bấm «Đọc toàn văn Điều kiện thuê xe» ở trên trước — sau đó mới đánh dấu được ô này.', thieuSdt: 'Chưa nhập số liên hệ (ít nhất 8 chữ số).', thieuKy: 'Chữ ký quá ngắn — ký lại.',
       matMang: 'Chưa gửi được — kiểm tra mạng rồi bấm lại. Chữ ký và các ô đã đánh dấu vẫn giữ nguyên.',
-      xong: 'ĐÃ XÁC NHẬN', xongMo: 'Hợp đồng {hd} đã giao kết lúc {luc}.', taiPdf: 'Tải bản hợp đồng (PDF)',
+      xong: 'ĐÃ XÁC NHẬN', xongMo: 'Hợp đồng {hd} đã giao kết lúc {luc}.', taiPdf: 'Tải bản hợp đồng (PDF)', hoTro: '🛟 Hỗ trợ trong chuyến đi — báo sự cố, hướng dẫn, liên hệ',
       pdfKem: 'File PDF gồm: hợp đồng, chữ ký hai bên, toàn văn Điều kiện thuê xe và phụ lục Quy định sử dụng xe.',
       pdfKem_34: 'File PDF gồm: hợp đồng, chữ ký hai bên, toàn văn Điều kiện thuê xe và phụ lục Hướng dẫn sử dụng xe.',
       nhan2: 'Nhắn Bên A', nhac: ['Pin còn 15% → báo ngay ' + HOTLINE, 'Dưới 10% → dừng xe, chờ Bên A', 'Trả xe trước {tra}'],
@@ -195,7 +195,7 @@
       nut: 'CONFIRM RENTAL', dangGui: 'Recording…',
       thieuO: 'Please tick all 3 boxes.', canMo: 'Tap «Read the full rental terms» above first — then you can tick this box.', thieuSdt: 'Please enter a contact number (at least 8 digits).', thieuKy: 'Signature too short — please sign again.',
       matMang: 'Not sent — check your connection and tap again. Your signature and ticks are kept.',
-      xong: 'CONFIRMED', xongMo: 'Contract {hd} was concluded at {luc}.', taiPdf: 'Download contract (PDF)',
+      xong: 'CONFIRMED', xongMo: 'Contract {hd} was concluded at {luc}.', taiPdf: 'Download contract (PDF)', hoTro: '🛟 Help during your rental — report a problem, guide, contact',
       pdfKem: 'The PDF contains: the bilingual contract, both signatures, the full rental terms and the Bike Use Rules annex.',
       pdfKem_34: 'The PDF contains: the bilingual contract, both signatures, the full rental terms and the Bike Use Guide annex.',
       nhan2: 'Message the owner', nhac: ['Battery 15% → message ' + HOTLINE, 'Below 10% → stop and wait for the owner', 'Return by {tra}'],
@@ -246,7 +246,7 @@
       nut: '确认租车', dangGui: '正在记录…',
       thieuO: '请勾选全部3项。', canMo: '请先点击上方「阅读租车条款全文」，然后才能勾选此项。', thieuSdt: '请填写联系号码（至少8位数字）。', thieuKy: '签名过短，请重签。',
       matMang: '未发送成功——请检查网络后再点一次。签名和勾选已保留。',
-      xong: '已确认', xongMo: '合同 {hd} 已于 {luc} 订立。', taiPdf: '下载合同（PDF）',
+      xong: '已确认', xongMo: '合同 {hd} 已于 {luc} 订立。', taiPdf: '下载合同（PDF）', hoTro: '🛟 租车期间帮助 — 报告故障、指南、联系',
       pdfKem: 'PDF文件包含：双语合同、双方签名、租车条件全文及《车辆使用规定》附件。',
       pdfKem_34: 'PDF文件包含：双语合同、双方签名、租车条件全文及《车辆使用指南》附件。',
       nhan2: '联系车主', nhac: ['电量15% → 立即联系 ' + HOTLINE, '低于10% → 停车等候车主', '请于 {tra} 前还车'],
@@ -541,7 +541,8 @@
       '<p>' + e(t('xongMo').replace('{hd}', p.soHD || '').replace('{luc}', KQ.luc || '')) + '</p>' +
       (KQ.pdf ? '<button class="chinh" id="pdf">' + t('taiPdf') + '</button>' + (moi ? '<p class="mo">' + e(tv('pdfKem', dk)) + '</p>' : '') : '') +
       '<div class="nhac">' + t('nhac').map(function (s) { return '• ' + e(s.replace('{tra}', p.tra || '')); }).join('<br>') + '</div>' +
-      '<h2 style="margin-top:16px">' + t('nhan2') + '</h2>' + lienHe() + '</div>' +
+      '<h2 style="margin-top:16px">' + t('nhan2') + '</h2>' + lienHe() +
+      '<a class="nut2" style="text-align:center;text-decoration:none;font-weight:600" href="/ho-tro/?hd=' + encodeURIComponent(p.soHD || '') + '&l=' + NN + '">' + e(t('hoTro')) + '</a></div>' +
       '<div class="the qd"><h2>' + e(tv('qdTieuDe', dk)) + '</h2><p class="mo">' + e(tv('qdGhi', dk)) + '</p>' + anhQD(dk) + '</div>' +
       hopPhieu(p);
     if ($('pdf')) $('pdf').onclick = taiPdf;
