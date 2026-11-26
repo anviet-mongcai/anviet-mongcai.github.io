@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#12674A">
 <meta name="robots" content="noindex,nofollow">
 <title>Xác nhận thuê xe · An Việt Móng Cái</title>
-<!-- Trang ký điện tử Điều kiện thuê xe · v2.8 · 24/11/2026 (đợt 6 · QĐ-D447 b: màn «Đã xác nhận» thêm nút sang trang hỗ trợ /ho-tro/ — mang số HĐ + ngôn ngữ; nội dung ký không đổi) · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
+<!-- Trang ký điện tử Điều kiện thuê xe · v2.9 · 25/11/2026 (phiên 4/6 · QĐ-D451 a: khối «Ảnh tình trạng xe lúc giao» trước phần xác nhận + ký — ảnh nhỏ tải sau khi trang hiện, chạm phóng to, lấy qua cổng {ky:"anh"} bằng mã phiếu; phụ lục đổi xe hiện ảnh xe mới; máy chủ zz_v92) · v2.8 · 24/11/2026 (đợt 6 · QĐ-D447 b: màn «Đã xác nhận» thêm nút sang trang hỗ trợ /ho-tro/ — mang số HĐ + ngôn ngữ; nội dung ký không đổi) · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
      v2.3: điều khoản v34 → thẻ «Hướng dẫn sử dụng xe v31» (QĐ-D303 a: tóm tắt, không thêm nghĩa vụ — ảnh qd/HUONG_DAN_v31_*.jpg),
            dòng định vị «chỉ xác định vị trí, không nghe, không ghi âm» (QĐ-D302 a); điều khoản v33 → thẻ QUY ĐỊNH v30 như v2.2.
      v2.2: máy chủ gửi điều khoản v34 (sau ngày hiệu lực — QĐ-D299) → ô dữ liệu «đã được thông báo» (QĐ-D296), câu ngôn ngữ
@@ -86,6 +86,13 @@
   .nhac{background:var(--vang);border-radius:10px;padding:10px 12px;text-align:left;font-size:15px;margin-top:12px}
   .che{position:fixed;inset:0;background:rgba(255,255,255,.75);display:none;align-items:center;justify-content:center;font-weight:600;z-index:9}
   .che.hien{display:flex}
+  /* v2.9 · ảnh xe lúc giao (QĐ-D451) */
+  .a92x{margin:10px 0 0}.a92x b{display:block;margin:0 0 4px}.a92g{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .a92g button{position:relative;border:1px solid var(--vien);border-radius:8px;padding:0;background:#F3F5F7;aspect-ratio:3/4;overflow:hidden;cursor:zoom-in}
+  .a92g img{width:100%;height:100%;object-fit:cover;display:block}.a92g span{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:2px 3px;line-height:1.25}
+  .a92to{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:20;display:none;align-items:center;justify-content:center;flex-direction:column}
+  .a92to.hien{display:flex}.a92to img{max-width:100%;max-height:84vh;object-fit:contain}.a92to p{color:#fff;margin:8px 12px;text-align:center;font-size:14px}
+  .a92to button{position:absolute;top:8px;right:10px;background:#fff;border:0;border-radius:20px;font-size:18px;width:40px;height:40px}
   .an{display:none!important}
 </style>
 </head>
@@ -442,6 +449,7 @@
     CK.gan($('ck'), anh);
     $('kyLai').onclick = function () { CK.xoa(); };
     $('gui').onclick = gui;
+    ganAnh();
   }
 
   function gui() {
@@ -503,6 +511,7 @@
     CK.gan($('ck'), anh);
     $('kyLai').onclick = function () { CK.xoa(); };
     $('gui').onclick = guiPL;
+    ganAnh();
   }
   function guiPL() {
     var loi = $('loi'); loi.textContent = '';
@@ -565,6 +574,64 @@
   }
 
   /* ── khung ký: nét vẽ bằng ngón tay / chuột ── */
+  /* ── v2.9 · 25/11/2026 · ảnh tình trạng xe lúc giao (QĐ-D451 a) — ảnh lấy qua cổng sau khi kiểm mã phiếu, không có link Drive ── */
+  var TA = {
+    vi: { td: 'Ảnh tình trạng xe lúc giao', tdPL: 'Ảnh tình trạng xe mới lúc giao', ghi: 'Bên A chụp khi bàn giao xe — xem kỹ trước khi ký. Chạm ảnh để phóng to.',
+          luc: 'Chụp lúc', tai: 'Đang tải ảnh…', loi: 'Chưa tải được ảnh — kéo xuống để tải lại trang.', goc: ['Chính diện trước', 'Chính diện sau', 'Nghiêng trái', 'Nghiêng phải', 'Đồng hồ · % pin', 'Cận cảnh'] },
+    en: { td: 'Vehicle condition photos at handover', tdPL: 'Replacement vehicle — condition photos at handover', ghi: 'Taken by Party A at handover — please check them before signing. Tap a photo to enlarge.',
+          luc: 'Taken at', tai: 'Loading photos…', loi: 'Photos could not be loaded — pull down to reload the page.', goc: ['Front', 'Rear', 'Left side', 'Right side', 'Dashboard · battery %', 'Close-up'] },
+    zh: { td: '交车时车辆状况照片', tdPL: '更换车辆交车时状况照片', ghi: '甲方交车时拍摄——签署前请仔细查看。点击照片可放大。',
+          luc: '拍摄时间', tai: '正在加载照片…', loi: '照片加载失败——请下拉刷新页面。', goc: ['正前方', '正后方', '左侧', '右侧', '仪表 · 电量%', '近景'] }
+  };
+  var ANH_NHO = null, ANH_DANG = false, ANH_LOI = false;
+  function ta(k) { return (TA[NN] || TA.vi)[k]; }
+  function khoiAnh() {
+    var ds = DL && DL.anh;
+    if (!ds || !ds.length) return '';
+    var moi = ds.some(function (x) { return x.moi; });
+    return '<div class="the" id="a92"><h2>' + e(ta(moi ? 'tdPL' : 'td')) + '</h2><p class="mo">' + e(ta('ghi')) + '</p>' +
+      ds.map(function (x, k) {
+        return '<div class="a92x"><b>' + e(x.loai) + ' · ' + e(x.bien) + '</b><span class="mo">' + e(ta('luc')) + ' ' + e(x.luc) + '</span><div class="a92g">' +
+          (x.so || []).map(function (so, i) {
+            var s = ANH_NHO && ANH_NHO[k] && ANH_NHO[k][i];
+            return '<button type="button" data-a92="' + k + '_' + i + '">' + (s ? '<img alt="" src="' + s + '">' : '') + '<span>' + so + ' · ' + e(ta('goc')[so - 1] || '') + '</span></button>';
+          }).join('') + '</div></div>';
+      }).join('') + (ANH_NHO ? '' : '<p class="mo" id="a92tt">' + e(ta(ANH_LOI ? 'loi' : 'tai')) + '</p>') + '</div>';
+  }
+  function ganAnh() {
+    if (!DL || !DL.anh || !DL.anh.length) return;
+    var o = $('o1') || $('pl1'), the = o && o.closest ? o.closest('.the') : null;
+    if (!the) return;
+    var cu = $('a92'); if (cu) cu.remove();
+    the.insertAdjacentHTML('beforebegin', khoiAnh());
+    $('a92').onclick = function (ev) {
+      var b = ev.target.closest('[data-a92]'); if (!b) return;
+      var p = b.getAttribute('data-a92').split('_'), x = DL.anh[+p[0]], so = x.so[+p[1]];
+      moTo(+p[0], +p[1], (x.bien || '') + ' · ' + so + ' · ' + (ta('goc')[so - 1] || ''));
+    };
+    if (!ANH_NHO && !ANH_DANG && !ANH_LOI) {
+      ANH_DANG = true;
+      goi({ ky: 'anh', t: MA, kieu: 'nho' }).then(function (r) {
+        ANH_DANG = false;
+        if (r && r.ok) ANH_NHO = r.nho; else ANH_LOI = true;
+        ganAnh();
+      }, function () { ANH_DANG = false; ANH_LOI = true; ganAnh(); });
+    }
+  }
+  function moTo(x, i, chu) {
+    var to = $('a92to');
+    if (!to) {
+      document.body.insertAdjacentHTML('beforeend', '<div class="a92to" id="a92to"><button type="button" aria-label="Đóng">✕</button><img alt=""><p></p></div>');
+      to = $('a92to');
+      to.onclick = function (ev) { if (ev.target.tagName !== 'IMG') to.className = 'a92to'; };
+    }
+    var im = to.querySelector('img'), s = ANH_NHO && ANH_NHO[x] && ANH_NHO[x][i];
+    im.src = s || ''; to.querySelector('p').textContent = chu + ' — ' + ta('tai'); to.className = 'a92to hien';
+    goi({ ky: 'anh', t: MA, x: x, i: i }).then(function (r) {
+      if (r && r.ok && to.className.indexOf('hien') >= 0) { im.src = r.src; to.querySelector('p').textContent = chu; }
+    }, function () { to.querySelector('p').textContent = chu; });
+  }
+
   var CK = (function () {
     var cv = null, ctx = null, nets = [], dang = null, dai = 0;
     function toaDo(ev) { var r = cv.getBoundingClientRect(); return { x: ev.clientX - r.left, y: ev.clientY - r.top }; }
