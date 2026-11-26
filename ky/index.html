@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#12674A">
 <meta name="robots" content="noindex,nofollow">
 <title>Xác nhận thuê xe · An Việt Móng Cái</title>
-<!-- Trang ký điện tử Điều kiện thuê xe · v2.9 · 25/11/2026 (phiên 4/6 · QĐ-D451 a: khối «Ảnh tình trạng xe lúc giao» trước phần xác nhận + ký — ảnh nhỏ tải sau khi trang hiện, chạm phóng to, lấy qua cổng {ky:"anh"} bằng mã phiếu; phụ lục đổi xe hiện ảnh xe mới; máy chủ zz_v92) · v2.8 · 24/11/2026 (đợt 6 · QĐ-D447 b: màn «Đã xác nhận» thêm nút sang trang hỗ trợ /ho-tro/ — mang số HĐ + ngôn ngữ; nội dung ký không đổi) · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
+<!-- Trang ký điện tử Điều kiện thuê xe · v2.10 · 26/11/2026 (phiên 5/6 · QĐ-D452 b: khối Bên B hiện «Số định danh cá nhân» + «Nơi sinh» khi phiếu có — hộ chiếu VN, HĐ v36, máy chủ zz_v93; không có thì không hiện dòng) · v2.9 · 25/11/2026 (phiên 4/6 · QĐ-D451 a: khối «Ảnh tình trạng xe lúc giao» trước phần xác nhận + ký — ảnh nhỏ tải sau khi trang hiện, chạm phóng to, lấy qua cổng {ky:"anh"} bằng mã phiếu; phụ lục đổi xe hiện ảnh xe mới; máy chủ zz_v92) · v2.8 · 24/11/2026 (đợt 6 · QĐ-D447 b: màn «Đã xác nhận» thêm nút sang trang hỗ trợ /ho-tro/ — mang số HĐ + ngôn ngữ; nội dung ký không đổi) · v2.7 · 10/11/2026 (QĐ-D347 a: thêm nhánh PHỤ LỤC ĐIỀU CHỈNH — máy chủ zz_v75 trả «pldc» thì hiện phụ lục, 2 ô xác nhận + ký tay; luồng hợp đồng gốc không đổi) · v2.6 · 07/11/2026 (QĐ-D317 a: chuyển sang anviet-mongcai.github.io/ky/ — tách khỏi đường dẫn app QLVH; nội dung không đổi) · v2.5 · 03/11/2026 (QĐ-D307: phải mở toàn văn mới tick được ô 1) · v2.4 (thiết bị thật) · v2.3 · 30/10/2026 · máy chủ zz_v67 + zz_v68
      v2.3: điều khoản v34 → thẻ «Hướng dẫn sử dụng xe v31» (QĐ-D303 a: tóm tắt, không thêm nghĩa vụ — ảnh qd/HUONG_DAN_v31_*.jpg),
            dòng định vị «chỉ xác định vị trí, không nghe, không ghi âm» (QĐ-D302 a); điều khoản v33 → thẻ QUY ĐỊNH v30 như v2.2.
      v2.2: máy chủ gửi điều khoản v34 (sau ngày hiệu lực — QĐ-D299) → ô dữ liệu «đã được thông báo» (QĐ-D296), câu ngôn ngữ
@@ -117,7 +117,7 @@
       quaGio: 'Quá giờ', sac: 'Bộ sạc kèm xe', co: 'Có', khong: 'Không', tong: 'Tổng',
       ben2: 'Thông tin hai bên', benA2: 'BÊN A — BÊN CHO THUÊ', benB2: 'BÊN B — BÊN THUÊ',
       ongBa: 'Ông (Bà)', giayTo: 'CCCD / Hộ chiếu', capNgay: 'cấp ngày', taiCQ: 'tại',
-      thuongTru: 'Nơi thường trú', sdt: 'SĐT liên lạc', quocTich: 'Quốc tịch', luuTru: 'Nơi lưu trú tại Việt Nam',
+      thuongTru: 'Nơi thường trú', sdt: 'SĐT liên lạc', quocTich: 'Quốc tịch', luuTru: 'Nơi lưu trú tại Việt Nam', soDdcn: 'Số định danh cá nhân', noiSinh: 'Nơi sinh',
       xeGio: 'Xe thuê và thời gian', giaoTra: 'Giao / trả xe tại', diaHen: 'Địa điểm Bên A hẹn',
       bb: '6 điều bắt buộc',
       bbDs: ['Chỉ đi trong P. Móng Cái 1, 2, 3 — ra ngoài phải nhắn và được Bên A đồng ý trước.',
@@ -165,7 +165,7 @@
       quaGio: 'Late fee', sac: 'Charger included', co: 'Yes', khong: 'No', tong: 'Total',
       ben2: 'The parties', benA2: 'PARTY A — OWNER', benB2: 'PARTY B — RENTER',
       ongBa: 'Mr / Ms', giayTo: 'ID card / Passport', capNgay: 'issued on', taiCQ: 'by',
-      thuongTru: 'Permanent address', sdt: 'Contact phone', quocTich: 'Nationality', luuTru: 'Accommodation in Vietnam',
+      thuongTru: 'Permanent address', sdt: 'Contact phone', quocTich: 'Nationality', luuTru: 'Accommodation in Vietnam', soDdcn: 'Personal identification number', noiSinh: 'Place of birth',
       xeGio: 'Bikes and times', giaoTra: 'Hand-over / return place', diaHen: 'Place appointed by the owner',
       bb: '6 must-know rules',
       bbDs: ['Ride only within Móng Cái wards 1, 2, 3 — going further needs the owner’s prior OK by message.',
@@ -216,7 +216,7 @@
       quaGio: '超时费', sac: '随车充电器', co: '有', khong: '无', tong: '合计',
       ben2: '双方信息', benA2: '甲方——出租方', benB2: '乙方——承租方',
       ongBa: '先生/女士', giayTo: '身份证/护照', capNgay: '签发日期', taiCQ: '签发机关',
-      thuongTru: '常住地址', sdt: '联系电话', quocTich: '国籍', luuTru: '在越南的住宿地址',
+      thuongTru: '常住地址', sdt: '联系电话', quocTich: '国籍', luuTru: '在越南的住宿地址', soDdcn: '个人身份识别号码', noiSinh: '出生地',
       xeGio: '租赁车辆及时间', giaoTra: '交车/还车地点', diaHen: '车主约定的地点',
       bb: '6条必须遵守的规定',
       bbDs: ['仅限芒街1、2、3坊（Móng Cái 1, 2, 3）内使用——超出范围须事先经车主短信同意。',
@@ -351,7 +351,8 @@
   }
   function haiBen(p) {
     var gon = !(p.a && (p.a.ten || p.a.gt));
-    var them = kv(L('quocTich'), p.qt || 'Việt Nam') + (p.luu_tru ? kv(L('luuTru'), p.luu_tru) : '');
+    var them = (p.so_ddcn ? kv(L('soDdcn'), p.so_ddcn) : '') + (p.noi_sinh ? kv(L('noiSinh'), p.noi_sinh) : '') +   // v2.10 · hộ chiếu VN (HĐ v36, zz_v93)
+      kv(L('quocTich'), p.qt || 'Việt Nam') + (p.luu_tru ? kv(L('luuTru'), p.luu_tru) : '');
     return '<div class="the"><h2>' + t('ben2') + '</h2>' + khoiBen(L('benA2'), benA(p), '', gon) + khoiBen(L('benB2'), benB(p), them, gon) + '</div>';
   }
 
